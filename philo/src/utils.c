@@ -6,9 +6,15 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:44:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/09 15:45:11 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/24 09:43:35 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+t_rules *get_rules(void)
+{
+	static t_rules	rules;
+
+	return (&rules);
+}

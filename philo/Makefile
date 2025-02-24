@@ -24,7 +24,11 @@ BIN_PATH := ./bin/
 
 # SOURCES AND OBJECTS
 FILES := \
-	main.c
+	lib.c \
+	init.c \
+	main.c \
+	utils.c \
+	errors.c 
 SRCS := $(addprefix $(SRC_PATH), $(FILES))
 OBJS := $(addprefix $(BIN_PATH), $(FILES:%.c=%.o))
 
