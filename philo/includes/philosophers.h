@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:43:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 09:08:46 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:41:48 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef enum e_bool
 typedef enum e_error
 {
 	E_SUCCESS,
+	E_FEW_ARGS,
+	E_MANY_ARGS,
 	E_INVALID_ARGS,
 	E_MUTEX_FAILED,
 	E_MALLOC_FAILED,
@@ -66,12 +68,17 @@ typedef struct s_rules
 	t_bool			philo_dead;
 }					t_rules;
 
+// UTILS
 t_rules				*get_rules(void);
 void				handle_error(t_error error);
 
-// UTILS
+// VALIDATE
+void				ft_validate_args(int ac, char *av[]);
+
+// LIBFT
 size_t				ft_strlen(const char *str);
 size_t				ft_atost(const char *nptr);
+t_bool				ft_isdigit(int c);
 
 // INIT
 void				init_rules(int argc, char *argv[]);

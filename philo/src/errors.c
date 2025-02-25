@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 09:56:57 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 13:29:08 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:37:35 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ void	handle_error(t_error error)
 	if (error == E_SUCCESS)
 		clear_all("");
 	if (error == E_INVALID_ARGS)
-		print_error("Invalid arguments !\n");
+		print_error("Arguments must be numbers !\n");
+	if (error == E_FEW_ARGS)
+		print_error("Too few arguments !\n");
+	if (error == E_MANY_ARGS)
+		print_error("Too many arguments !\n");
 	if (error == E_MUTEX_FAILED)
 		clear_all("Mutex failed !\n");
 	if (error == E_MALLOC_FAILED)

@@ -30,7 +30,8 @@ FILES := \
 	utils.c \
 	errors.c \
 	ft_mutex.c \
-	ft_malloc.c 
+	ft_malloc.c \
+	validation.c 
 SRCS := $(addprefix $(SRC_PATH), $(FILES))
 OBJS := $(addprefix $(BIN_PATH), $(FILES:%.c=%.o))
 
