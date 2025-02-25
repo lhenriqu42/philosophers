@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:18:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 09:23:15 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:18:40 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_rules(int argc, char *argv[])
 	rules->philos = ft_malloc(sizeof(t_philo) * rules->philos_qnt);
 }
 
-static void ft_init_forks(t_forks *forks, size_t i)
+static void	ft_init_forks(t_forks *forks, size_t i)
 {
 	static t_forks			*first_forks;
 	static pthread_mutex_t	*last;
@@ -38,14 +38,14 @@ static void ft_init_forks(t_forks *forks, size_t i)
 	forks->right = ft_malloc(sizeof(pthread_mutex_t));
 	if (i == 0)
 	{
-		if(ft_mutex_init(forks->right))
+		if (ft_mutex_init(forks->right))
 			handle_error(E_MUTEX_FAILED);
 		last = forks->right;
 		first_forks = forks;
 	}
 	else
 	{
-		if(ft_mutex_init(forks->right))
+		if (ft_mutex_init(forks->right))
 			handle_error(E_MUTEX_FAILED);
 		forks->left = last;
 		last = forks->right;

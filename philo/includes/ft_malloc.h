@@ -21,7 +21,7 @@ typedef struct s_malloc
 	size_t	i;
 }			t_malloc;
 
-void	*ft_malloc(size_t size);
-void	ft_free_all(void);
+void		*ft_malloc(size_t size);
+void		ft_free_all(void);
 
 #endif

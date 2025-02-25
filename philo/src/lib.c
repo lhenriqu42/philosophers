@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:07:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 09:22:45 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:18:56 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ size_t	ft_atost(const char *nptr)
 	return (result * is_negative);
 }
 
-size_t ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

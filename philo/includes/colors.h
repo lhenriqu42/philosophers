@@ -66,4 +66,3 @@
 # define C_RST "\001\033[0m\002"
 
 #endif
-
