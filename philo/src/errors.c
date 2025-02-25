@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 09:56:57 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 14:37:35 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:36:13 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	handle_error(t_error error)
 		print_error("Too few arguments !\n");
 	if (error == E_MANY_ARGS)
 		print_error("Too many arguments !\n");
+	if (error == E_INVALID_PHILOS)
+		print_error("Number of philosophers must be between 1 and 200 !\n");
 	if (error == E_MUTEX_FAILED)
 		clear_all("Mutex failed !\n");
 	if (error == E_MALLOC_FAILED)

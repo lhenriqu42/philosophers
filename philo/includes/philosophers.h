@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:43:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 14:41:48 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:34:12 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef enum e_error
 	E_INVALID_ARGS,
 	E_MUTEX_FAILED,
 	E_MALLOC_FAILED,
+	E_INVALID_PHILOS,
 }					t_error;
 
 typedef struct s_custom_mutex
