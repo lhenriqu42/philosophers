@@ -6,12 +6,19 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 09:56:57 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/24 15:07:28 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:08:14 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include "utils.h"
+
+static void	clear_all(char *error)
+{
+	ft_free_all();
+	ft_mutex_destroy_all();
+	write(2, error, ft_strlen(error));
+}
 
 void print_guide()
 {
@@ -39,6 +46,8 @@ void handle_error(t_error error)
 	if (error == E_INVALID_ARGS)
 		print_error("Invalid arguments !\n");
 	if (error == E_MUTEX_FAILED)
-		clean_all();
+		clear_all("Mutex failed !\n");
+	if (error == E_MALLOC_FAILED)
+		clear_all("Malloc failed !\n");
 	exit(error);
 }

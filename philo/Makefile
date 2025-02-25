@@ -28,7 +28,9 @@ FILES := \
 	init.c \
 	main.c \
 	utils.c \
-	errors.c 
+	errors.c \
+	ft_mutex.c \
+	ft_malloc.c 
 SRCS := $(addprefix $(SRC_PATH), $(FILES))
 OBJS := $(addprefix $(BIN_PATH), $(FILES:%.c=%.o))
 
@@ -75,7 +77,7 @@ valgrind: all
 	--show-leak-kinds=all -s \
 	--track-origins=yes \
 	--log-file=$(VALGRIND_LOG) \
-	./$(NAME) x x x x
+	./$(NAME) 1 2 3 4
 	@cat $(VALGRIND_LOG)
 
 .PHONY: all clean fclean re print valgrind

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:43:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/24 15:01:11 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:08:46 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PHILOSOPHERS_H
 
 #include "colors.h"
+#include "ft_mutex.h"
+#include "ft_malloc.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,6 +34,7 @@ typedef enum e_error
 	E_SUCCESS,
 	E_INVALID_ARGS,
 	E_MUTEX_FAILED,
+	E_MALLOC_FAILED,
 }	t_error;
 
 typedef struct s_custom_mutex

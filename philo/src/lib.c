@@ -6,11 +6,18 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:07:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/24 13:16:39 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:22:45 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+t_bool	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (true);
+	return (false);
+}
 
 size_t	ft_atost(const char *nptr)
 {
