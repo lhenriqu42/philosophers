@@ -6,11 +6,53 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:39:45 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 11:02:42 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:39:19 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+static void	philo_take_fork(t_philo *philo)
+{
+	if (philo->id % 2 == 0)
+	{
+		ft_mutex_lock(philo->forks.right);
+		print_status(*philo, S_FORK);
+		ft_mutex_lock(philo->forks.left);
+		print_status(*philo, S_FORK);
+	}
+	else
+	{
+		ft_mutex_lock(philo->forks.left);
+		print_status(*philo, S_FORK);
+		ft_mutex_lock(philo->forks.right);
+		print_status(*philo, S_FORK);
+	}
+}
+
+static void	philo_eat(t_philo *philo)
+{
+	print_status(*philo, S_EATING);
+	ft_msleep(get_rules()->eat_time);
+	ft_mutex_lock(&get_mutex()->meals);
+	philo->last_meal = ft_get_time();
+	philo->rounds++;
+	ft_mutex_unlock(&get_mutex()->meals);
+	ft_mutex_unlock(philo->forks.left);
+	ft_mutex_unlock(philo->forks.right);
+}
+
+static void	philo_sleep(t_philo *philo)
+{
+	print_status(*philo, S_SLEEPING);
+	ft_msleep(get_rules()->sleep_time);
+}
+
+static void	philo_think(t_philo *philo)
+{
+	print_status(*philo, S_THINKING);
+	ft_msleep(1);
+}
 
 void	*philo_task(void *args)
 {
@@ -18,12 +60,14 @@ void	*philo_task(void *args)
 
 	philo = (t_philo *)args;
 	(void)philo;
-	// while (1)
-	// {
-	// 	philo_take_fork(philo);
-	// 	philo_eat(philo);
-	// 	philo_sleep(philo);
-	// 	philo_think(philo);
-	// }
+	while (check_philo_dead())
+	{
+		if (ft_all_eaten())
+			break ;
+		philo_take_fork(philo);
+		philo_eat(philo);
+		philo_sleep(philo);
+		philo_think(philo);
+	}
 	return (NULL);
 }

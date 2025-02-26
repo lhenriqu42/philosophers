@@ -6,13 +6,13 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:05:33 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 10:05:43 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:47:36 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static long long	get_now_time(void)
+static size_t	get_now_time(void)
 {
 	struct timeval	time;
 
@@ -20,9 +20,9 @@ static long long	get_now_time(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-long long	ft_get_time(void)
+size_t	ft_get_time(void)
 {
-	static long long	start_time;
+	static size_t	start_time;
 
 	if (!start_time)
 	{

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:59:11 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 08:00:53 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:20:34 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,29 @@ t_bool	ft_validate_args(int ac, char *av[])
 		}
 		i++;
 	}
+	return (false);
+}
+
+t_bool	check_philo_dead(void)
+{
+	ft_mutex_lock(&get_mutex()->philo_dead);
+	if (get_rules()->philo_dead)
+	{
+		ft_mutex_unlock(&get_mutex()->philo_dead);
+		return (true);
+	}
+	ft_mutex_unlock(&get_mutex()->philo_dead);
+	return (false);
+}
+
+t_bool	ft_all_eaten(void)
+{
+	ft_mutex_lock(&get_mutex()->meals);
+	if (get_rules()->finished)
+	{
+		ft_mutex_unlock(&get_mutex()->meals);
+		return (true);
+	}
+	ft_mutex_unlock(&get_mutex()->meals);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 08:19:48 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 13:19:41 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:20:10 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,14 @@ void	ft_mutex_destroy_all(void)
 		pthread_mutex_destroy(mtx->list[mtx->i]);
 		mtx->list[mtx->i] = NULL;
 	}
+}
+
+void	ft_mutex_lock(pthread_mutex_t *mutex)
+{
+	pthread_mutex_lock(mutex);
+}
+
+void	ft_mutex_unlock(pthread_mutex_t *mutex)
+{
+	pthread_mutex_unlock(mutex);
 }

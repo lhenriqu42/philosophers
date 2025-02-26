@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 09:56:57 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 08:08:34 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:48:42 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,24 @@ void	print_error(char *error)
 	print_guide();
 }
 
+static void	exit_succes(void)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < get_rules()->philos_qnt)
+	{
+		pthread_join(get_rules()->philos->thread.thread, NULL);
+		i++;
+	}
+	ft_free_all();
+	ft_mutex_destroy_all();
+}
+
 t_bool	handle_error(t_error error)
 {
 	if (error == E_SUCCESS)
-		clear_all("");
+		exit_succes();
 	if (error == E_INVALID_ARGS)
 		print_error("Arguments must be numbers !\n");
 	if (error == E_FEW_ARGS)
