@@ -6,13 +6,13 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:18:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 15:34:22 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 08:06:31 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	init_rules(int argc, char *argv[])
+t_bool	init_rules(int argc, char *argv[])
 {
 	t_rules	*rules;
 
@@ -20,9 +20,9 @@ void	init_rules(int argc, char *argv[])
 	rules->philo_dead = false;
 	rules->philos_qnt = ft_atost(argv[1]);
 	if (rules->philos_qnt < 1)
-		handle_error(E_INVALID_PHILOS);
+		return (handle_error(E_INVALID_PHILOS));
 	if (rules->philos_qnt > 200)
-		handle_error(E_INVALID_PHILOS);
+		return (handle_error(E_INVALID_PHILOS));
 	rules->die_time = ft_atost(argv[2]);
 	rules->eat_time = ft_atost(argv[3]);
 	rules->sleep_time = ft_atost(argv[4]);
@@ -31,9 +31,10 @@ void	init_rules(int argc, char *argv[])
 	else
 		rules->must_eat_times = __SIZE_MAX__;
 	rules->philos = ft_malloc(sizeof(t_philo) * rules->philos_qnt);
+	return (false);
 }
 
-static void	ft_init_forks(t_forks *forks, size_t i)
+static t_bool	ft_init_forks(t_forks *forks, size_t i)
 {
 	static t_forks			*first_forks;
 	static pthread_mutex_t	*last;
@@ -42,7 +43,7 @@ static void	ft_init_forks(t_forks *forks, size_t i)
 	{
 		forks->right = ft_malloc(sizeof(pthread_mutex_t));
 		if (ft_mutex_init(forks->right))
-		handle_error(E_MUTEX_FAILED);
+			return (handle_error(E_MUTEX_FAILED));
 		last = forks->right;
 		first_forks = forks;
 	}
@@ -50,15 +51,16 @@ static void	ft_init_forks(t_forks *forks, size_t i)
 	{
 		forks->right = ft_malloc(sizeof(pthread_mutex_t));
 		if (ft_mutex_init(forks->right))
-			handle_error(E_MUTEX_FAILED);
+			return (handle_error(E_MUTEX_FAILED));
 		forks->left = last;
 		last = forks->right;
 		if (i == get_rules()->philos_qnt - 1)
 			first_forks->left = forks->right;
 	}
+	return (false);
 }
 
-void	init_philos(t_rules *rules)
+t_bool	init_philos(t_rules *rules)
 {
 	size_t	i;
 
@@ -66,7 +68,9 @@ void	init_philos(t_rules *rules)
 	while (i < rules->philos_qnt)
 	{
 		rules->philos[i].id = i + 1;
-		ft_init_forks(&rules->philos[i].forks, i);
+		if (ft_init_forks(&rules->philos[i].forks, i))
+			return (true);
 		i++;
 	}
+	return (false);
 }

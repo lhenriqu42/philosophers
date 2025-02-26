@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:43:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 15:34:12 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 07:57:49 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ typedef struct s_rules
 
 // UTILS
 t_rules				*get_rules(void);
-void				handle_error(t_error error);
+t_bool				handle_error(t_error error);
 
 // VALIDATE
-void				ft_validate_args(int ac, char *av[]);
+t_bool				ft_validate_args(int ac, char *av[]);
 
 // LIBFT
 size_t				ft_strlen(const char *str);
@@ -82,7 +82,7 @@ size_t				ft_atost(const char *nptr);
 t_bool				ft_isdigit(int c);
 
 // INIT
-void				init_rules(int argc, char *argv[]);
-void				init_philos(t_rules *rules);
+t_bool				init_rules(int argc, char *argv[]);
+t_bool				init_philos(t_rules *rules);
 
 #endif
