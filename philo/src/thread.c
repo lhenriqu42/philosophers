@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 12:24:30 by xluizikax         #+#    #+#             */
-/*   Updated: 2025/02/26 10:22:59 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/02/26 10:30:29 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/02/26 11:04:32 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+void	thread_build(t_thread *thread, t_philo *philo)
 {
-	if (ft_validate_args(argc, argv))
-		return (1);
-	if (init_rules(argc, argv))
-		return (1);
-	if (init_philos(get_rules()))
-		return (1);
-	if (start_philo_task(get_rules()))
-		return (1);
-	handle_error(E_SUCCESS);
-	return (0);
+	thread->fun = &philo_task;
+	thread->args = philo;
+}
+
+t_bool	init_thread(t_thread thread)
+{
+	if (pthread_create(&thread.thread, NULL, thread.fun, thread.args))
+		return (true);
+	return (false);
 }

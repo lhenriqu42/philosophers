@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:18:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 08:06:31 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 10:42:13 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_bool	init_philos(t_rules *rules)
 		rules->philos[i].id = i + 1;
 		if (ft_init_forks(&rules->philos[i].forks, i))
 			return (true);
+		thread_build(&rules->philos[i].thread, &rules->philos[i]);
 		i++;
 	}
 	return (false);

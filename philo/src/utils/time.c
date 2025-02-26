@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 12:24:30 by xluizikax         #+#    #+#             */
-/*   Updated: 2025/02/26 10:22:59 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/02/26 10:05:33 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/02/26 10:05:43 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+static long long	get_now_time(void)
 {
-	if (ft_validate_args(argc, argv))
-		return (1);
-	if (init_rules(argc, argv))
-		return (1);
-	if (init_philos(get_rules()))
-		return (1);
-	if (start_philo_task(get_rules()))
-		return (1);
-	handle_error(E_SUCCESS);
-	return (0);
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+long long	ft_get_time(void)
+{
+	static long long	start_time;
+
+	if (!start_time)
+	{
+		start_time = get_now_time();
+		return (0);
+	}
+	return (get_now_time() - start_time);
+}
+
+void	ft_msleep(long long ms)
+{
+	usleep(ms * 1000);
 }

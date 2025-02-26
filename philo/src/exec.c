@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 12:24:30 by xluizikax         #+#    #+#             */
-/*   Updated: 2025/02/26 10:22:59 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/02/26 10:00:39 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/02/26 11:01:40 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+t_bool	start_philo_task(t_rules *rules)
 {
-	if (ft_validate_args(argc, argv))
-		return (1);
-	if (init_rules(argc, argv))
-		return (1);
-	if (init_philos(get_rules()))
-		return (1);
-	if (start_philo_task(get_rules()))
-		return (1);
-	handle_error(E_SUCCESS);
-	return (0);
+	t_philo	philo;
+	size_t	i;
+
+	i = 0;
+	while (i < rules->philos_qnt)
+	{
+		philo = rules->philos[i];
+		if (init_thread(philo.thread))
+			return (true);
+		i++;
+	}
+	return (false);
 }

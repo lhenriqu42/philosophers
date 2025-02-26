@@ -21,24 +21,29 @@ CFLAGS := -Wall -Wextra -g3 -Werror
 HEADER_PATH := ./includes/
 SRC_PATH := ./src/
 BIN_PATH := ./bin/
+UTILS_PATH := ./utils/
 
 # SOURCES AND OBJECTS
 FILES := \
-	lib.c \
+	exec.c \
+	task.c \
 	init.c \
 	main.c \
-	utils.c \
+	thread.c \
 	errors.c \
-	ft_mutex.c \
-	ft_malloc.c \
-	validation.c 
+	validation.c \
+	$(UTILS_PATH)lib.c \
+	$(UTILS_PATH)time.c \
+	$(UTILS_PATH)utils.c \
+	$(UTILS_PATH)ft_mutex.c \
+	$(UTILS_PATH)ft_malloc.c 
 SRCS := $(addprefix $(SRC_PATH), $(FILES))
 OBJS := $(addprefix $(BIN_PATH), $(FILES:%.c=%.o))
 
 all: $(BIN_PATH) print $(NAME)
 
 $(BIN_PATH):
-	@mkdir -p $(BIN_PATH)
+	@mkdir -p $(BIN_PATH)$(UTILS_PATH)
 
 print:
 ifeq ($(wildcard $(NAME)),)
