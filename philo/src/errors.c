@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 09:56:57 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 13:48:42 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:40:55 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	exit_succes(void)
 	i = 0;
 	while (i < get_rules()->philos_qnt)
 	{
+		printf("Joining thread %zu\n", i);
 		pthread_join(get_rules()->philos->thread.thread, NULL);
 		i++;
 	}
@@ -69,6 +70,8 @@ t_bool	handle_error(t_error error)
 		print_error("Number of philosophers must be between 1 and 200 !\n");
 	if (error == E_MUTEX_FAILED)
 		clear_all("Mutex failed !\n");
+	if (error == E_THREAD_FAILED)
+		clear_all("Thread failed !\n");
 	if (error == E_MALLOC_FAILED)
 		clear_all("Malloc failed !\n");
 	return (true);

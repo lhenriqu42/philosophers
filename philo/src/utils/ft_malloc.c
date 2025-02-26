@@ -6,11 +6,12 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 07:50:42 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/25 08:54:16 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:30:30 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_malloc.h"
+#include "string.h"
 
 static t_malloc	*get_malloc(void)
 {
@@ -26,6 +27,7 @@ void	*ft_malloc(size_t size)
 
 	mlc = get_malloc();
 	ptr = malloc(size);
+	memset(ptr, 0, size);
 	mlc->list[mlc->i] = ptr;
 	mlc->i++;
 	return (ptr);
