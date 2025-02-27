@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:44:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/27 13:50:25 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 14:41:07 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ static void	print_msg(int id, char *msg)
 void	print_status(t_philo philo, t_status status)
 {
 	if (status == S_FORK)
-		print_msg(philo.id, C_WHT C_BLD "has taken a fork" C_RST);
+		print_msg(philo.id, C_WHT C_BLD "🍴 has taken a fork" C_RST);
 	if (status == S_SLEEPING)
-		print_msg(philo.id, C_CYA C_BLD "is sleeping" C_RST);
+		print_msg(philo.id, C_CYA C_BLD "💤 is sleeping" C_RST);
 	if (status == S_THINKING)
-		print_msg(philo.id, C_BLU C_BLD "is thinking" C_RST);
+		print_msg(philo.id, C_BLU C_BLD "🤔 is thinking" C_RST);
 	if (status == S_EATING)
-		print_msg(philo.id, C_YEL C_BLD "is eating" C_RST);
+		print_msg(philo.id, C_YEL C_BLD "🥗 is eating" C_RST);
 	if (status == S_DEAD)
-		print_msg(philo.id, C_RED C_BLD "died" C_RST);
+		print_msg(philo.id, C_RED C_BLD "💀 died" C_RST);
 }
