@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 09:56:57 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/27 08:17:17 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:33:58 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	clear_all(char *error)
 {
-	ft_free_all();
 	ft_mutex_destroy_all();
+	ft_free_all();
 	write(2, error, ft_strlen(error));
 }
 
@@ -54,8 +54,8 @@ static void	exit_succes(void)
 			perror("pthread_join");
 		i++;
 	}
-	ft_free_all();
 	ft_mutex_destroy_all();
+	ft_free_all();
 }
 
 t_bool	handle_error(t_error error)

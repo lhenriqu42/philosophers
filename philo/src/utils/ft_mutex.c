@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 08:19:48 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 13:20:10 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:30:42 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ int	ft_mutex_init(pthread_mutex_t *mutex)
 	t_mutex	*mtx;
 
 	mtx = get_mutex();
-	if (pthread_mutex_init(mutex, NULL) != 0)
-	{
-		mtx->list[mtx->i] = mutex;
-		mtx->i++;
+	if (pthread_mutex_init(mutex, NULL))
 		return (1);
-	}
+	mtx->list[mtx->i] = mutex;
+	mtx->i++;
 	return (0);
 }
 
