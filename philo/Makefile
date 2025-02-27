@@ -84,7 +84,7 @@ valgrind: all
 	--track-origins=yes \
 	--errors-for-leak-kinds=definite \
 	--log-file=$(VALGRIND_LOG) \
-	./$(NAME) 10 2 3 4
+	./$(NAME) 10 600 120 60
 	@cat $(VALGRIND_LOG)
 
 .PHONY: all clean fclean re print valgrind
