@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:00:39 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/27 10:56:23 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:27:02 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ t_bool	start_philo_task(t_rules *rules)
 {
 	t_philo	*philo;
 	size_t	i;
-
 
 	if (rules->philos_qnt == 1)
 	{

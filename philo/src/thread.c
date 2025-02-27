@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:30:29 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/27 10:50:28 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:29:33 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*solo_routine(void *args)
 
 	philo = (t_philo *)args;
 	print_status(*philo, S_FORK);
-	ft_msleep(get_rules()->die_time);
-	print_status(*philo, S_DEAD);
+	while (!check_philo_dead())
+		ft_msleep(get_rules()->die_time / 2);
 	return (NULL);
 }

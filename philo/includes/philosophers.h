@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:43:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/27 10:50:44 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:27:41 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include "ft_mutex.h"
 # include "ft_malloc.h"
 
-# include <sys/time.h>
-# include <pthread.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <pthread.h>
+# include <sys/time.h>
 
 typedef enum e_bool
 {
@@ -75,7 +75,7 @@ typedef struct s_philo
 {
 	int				id;
 	size_t			rounds;
-	size_t		last_meal;
+	size_t			last_meal;
 	t_thread		thread;
 	t_forks			forks;
 }					t_philo;
