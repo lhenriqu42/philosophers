@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:39:45 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/27 08:01:06 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:53:41 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	*philo_task(void *args)
 	t_philo	*philo;
 
 	philo = (t_philo *)args;
+	if (philo->id % 2 == 0)
+		ft_msleep(1);
 	while (!check_philo_dead())
 	{
 		if (ft_all_eaten())
