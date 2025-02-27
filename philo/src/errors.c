@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 09:56:57 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 16:40:55 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:17:17 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,15 @@ void	print_error(char *error)
 
 static void	exit_succes(void)
 {
-	size_t	i;
+	size_t		i;
+	pthread_t	thread;
 
 	i = 0;
 	while (i < get_rules()->philos_qnt)
 	{
-		printf("Joining thread %zu\n", i);
-		pthread_join(get_rules()->philos->thread.thread, NULL);
+		thread = get_rules()->philos[i].thread.thread;
+		if (pthread_join(thread, NULL))
+			perror("pthread_join");
 		i++;
 	}
 	ft_free_all();

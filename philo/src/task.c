@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:39:45 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 15:18:12 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:01:06 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	philo_sleep(t_philo *philo)
 static void	philo_think(t_philo *philo)
 {
 	print_status(*philo, S_THINKING);
-	ft_msleep(1);
 }
 
 void	*philo_task(void *args)
