@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:44:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/27 13:27:18 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:50:25 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ t_utils_mutex	*get_mutex(void)
 
 static void	print_msg(int id, char *msg)
 {
+	ft_mutex_lock(&get_mutex()->print);
 	if (!check_philo_dead())
 	{
-		ft_mutex_lock(&get_mutex()->print);
 		printf(C_WHT C_BLD "%zu " C_RST "%d %s\n", ft_get_time(), id, msg);
-		ft_mutex_unlock(&get_mutex()->print);
 	}
+	ft_mutex_unlock(&get_mutex()->print);
 }
 
 void	print_status(t_philo philo, t_status status)
