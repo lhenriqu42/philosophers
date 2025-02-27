@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:43:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 16:21:32 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:50:44 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ t_bool				start_philo_task(t_rules *rules);
 
 // THREAD
 
-t_bool				init_thread(t_thread thread);
+t_bool				init_thread(t_thread *thread);
 void				thread_build(t_thread *thread, t_philo *philo);
 
 #endif

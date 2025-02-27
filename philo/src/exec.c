@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:00:39 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 16:23:07 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:56:23 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,15 @@ static void	ft_monitor(void)
 
 t_bool	start_philo_task(t_rules *rules)
 {
-	t_philo	philo;
+	t_philo	*philo;
 	size_t	i;
+
 
 	if (rules->philos_qnt == 1)
 	{
-		philo.thread.fun = &solo_routine;
-		if (init_thread(philo.thread))
+		philo = &rules->philos[0];
+		philo->thread.fun = &solo_routine;
+		if (init_thread(&philo->thread))
 			return (handle_error(E_THREAD_FAILED));
 	}
 	else
@@ -94,8 +96,8 @@ t_bool	start_philo_task(t_rules *rules)
 		i = 0;
 		while (i < rules->philos_qnt)
 		{
-			philo = rules->philos[i];
-			if (init_thread(philo.thread))
+			philo = &rules->philos[i];
+			if (init_thread(&philo->thread))
 				return (handle_error(E_THREAD_FAILED));
 			i++;
 		}

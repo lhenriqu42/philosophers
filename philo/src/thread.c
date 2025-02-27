@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:30:29 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 16:20:51 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:50:28 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	thread_build(t_thread *thread, t_philo *philo)
 	thread->args = philo;
 }
 
-t_bool	init_thread(t_thread thread)
+t_bool	init_thread(t_thread *thread)
 {
-	if (pthread_create(&thread.thread, NULL, thread.fun, thread.args))
+	if (pthread_create(&thread->thread, NULL, thread->fun, thread->args))
 		return (true);
 	return (false);
 }
