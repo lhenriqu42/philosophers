@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:05:33 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 13:47:36 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/28 09:25:54 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ size_t	ft_get_time(void)
 
 void	ft_msleep(long long ms)
 {
+	if (ms < 0)
+		ms = 0;
 	usleep(ms * 1000);
 }

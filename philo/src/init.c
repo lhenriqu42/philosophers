@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:18:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/28 08:07:19 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/28 09:29:30 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ t_bool	init_rules(int argc, char *argv[])
 	rules->die_time = ft_atost(argv[2]);
 	rules->eat_time = ft_atost(argv[3]);
 	rules->sleep_time = ft_atost(argv[4]);
-	rules->think_time = rules->die_time / 8;
+	rules->think_time = rules->die_time - rules->eat_time - rules->sleep_time;
+	if (rules->think_time > 5)
+		rules->think_time = 5;
 	if (argc == 6)
 		rules->must_eat_times = ft_atost(argv[5]);
 	else
