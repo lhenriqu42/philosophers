@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:18:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/26 13:48:32 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/28 08:07:19 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ t_bool	init_utils_mutex(t_utils_mutex *mtx)
 	if (ft_mutex_init(&mtx->print))
 		return (handle_error(E_MUTEX_FAILED));
 	if (ft_mutex_init(&mtx->philo_dead))
-		return (handle_error(E_MUTEX_FAILED));
-	if (ft_mutex_init(&mtx->philo_take_fork))
 		return (handle_error(E_MUTEX_FAILED));
 	return (false);
 }
@@ -39,6 +37,7 @@ t_bool	init_rules(int argc, char *argv[])
 	rules->die_time = ft_atost(argv[2]);
 	rules->eat_time = ft_atost(argv[3]);
 	rules->sleep_time = ft_atost(argv[4]);
+	rules->think_time = rules->die_time / 8;
 	if (argc == 6)
 		rules->must_eat_times = ft_atost(argv[5]);
 	else

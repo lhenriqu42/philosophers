@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:43:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/02/27 13:27:41 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/02/28 08:07:04 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_thread
 
 typedef struct s_utils_mutex
 {
-	pthread_mutex_t	philo_take_fork;
 	pthread_mutex_t	philo_dead;
 	pthread_mutex_t	meals;
 	pthread_mutex_t	print;
@@ -85,6 +84,7 @@ typedef struct s_rules
 	size_t			die_time;
 	size_t			eat_time;
 	size_t			sleep_time;
+	size_t			think_time;
 	size_t			philos_qnt;
 	size_t			must_eat_times;
 	t_philo			*philos;
